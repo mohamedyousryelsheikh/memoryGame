@@ -107,3 +107,36 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.dialog-wrapper {
+    position: fixed;
+    background: rgba(51, 51, 51, .8);
+   
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 17% 0;
+    font-size: 45px;
+    z-index: 1;
+}
+.success-dialog {
+    background: #f7f7f7;
+    width: 36%;
+    margin: 0 auto;
+    padding: 64px 0;
+    border-radius: 4px;
+    box-shadow: 1px -1px 97px #FFC107;
+}
+.success-dialog i{color:#6ad46a}
+
+button.btn.btn-primary {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    background: #81caf7;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 20px;
+}
