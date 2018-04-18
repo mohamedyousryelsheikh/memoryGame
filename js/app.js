@@ -41,13 +41,14 @@ function generateCards(){
 
 
 }
-
+/*function to add opened cards to an array */
 function addOpenedCards(cardOpened) {
     openedCards.push(cardOpened);
     var openedCardsStatus = openedCardsChecker();
 
 }
 
+/*function checking opened cards matching or not*/
 function openedCardsChecker() {
 
     if (openedCards.length == 2) {
@@ -67,7 +68,7 @@ function openedCardsChecker() {
 
 
 }
-
+/*function to reset the game once again */
 function resetCards() {
     $(".deck.new-deck li").removeClass("open show match");
     movesCounter = 0;
