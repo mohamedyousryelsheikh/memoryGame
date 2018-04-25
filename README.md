@@ -18,10 +18,6 @@ The game ends once all cards have been correctly matched.
 
 
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
 * [easyTimer.js](https://albert-gonzalez.github.io/easytimer.js/) - The Timer Used
