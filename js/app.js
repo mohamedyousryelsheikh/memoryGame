@@ -72,32 +72,42 @@ function openedCardsChecker() {
 function resetCards() {
     $(".deck.new-deck li").removeClass("open show match");
     movesCounter = 0;
+    movesToMatch = 0;
     $(".moves").text(movesCounter);
-    $(".stars li").css("color", "#2e3d49");
+    $(".stars li").css("color", "orange");
     openedCards = [];
     $(".dialog-wrapper").hide();
     generateCards();
+
+    timer.reset();
+    timer.start();
 }
 
 function playerPerfomance() {
     var numOfCardsMatching = $(".new-deck li.match").length;
 
     switch (true) {
-        case ((movesCounter>=6 && movesCounter<=12) && (numOfCardsMatching>=4 && numOfCardsMatching<=6)):
-            $(".stars li:first-child").css("color", "orange");
+        case ((movesToMatch>=6 && movesToMatch<=12) && (numOfCardsMatching>=0 && numOfCardsMatching<=6)):
+            $(".stars li:last-child").css("color", "");
             break;
-        case ((movesCounter>=14 && movesCounter<=20) && (numOfCardsMatching>=7 && numOfCardsMatching<=10)):
-            $(".stars li:nth-child(2)").css("color", "orange");
+        case ((movesToMatch>=14 && movesToMatch<=20) && (numOfCardsMatching>=0 && numOfCardsMatching<=10)):
+            $(".stars li:nth-child(2)").css("color", "");
             break;
-        case ((movesCounter>=21 && movesCounter<=30) && (numOfCardsMatching>=11 && numOfCardsMatching<=16)):
-            $(".stars li:last-child").css("color", "orange");
+        case ((movesToMatch>=21 && movesToMatch<=30) && (numOfCardsMatching>=0 && numOfCardsMatching<=16)):
+            $(".stars li:first-child").css("color", "");
             break;
     }
 }
 
 function winTheGame(matchingCardsCounter) {
-    if (matchingCardsCounter == $(".new-deck li").length)
+    if (matchingCardsCounter == $(".new-deck li").length){
         $(".dialog-wrapper").show();
+         timer.stop();
+         var scorePanel = document.getElementsByClassName("score-panel");
+         var scoreClone = scorePanel[0].cloneNode(true);
+        $(".rate-panel").append(scoreClone);
+    
+        }
 }
 
 
@@ -108,15 +118,29 @@ let openedCards = [];
 let cardsList = "";
 var successFlag = "";
 var movesCounter = 0;
-
+var movesToMatch= 0;
+var timer = new Timer();
 $(document).ready(function () {
+
+    /*Timer object and function call */
+    
+    timer.start({precision: 'secondTenths'});
+    timer.addEventListener('secondTenthsUpdated', function (e) {
+        $('#basicUsage').html(timer.getTimeValues().toString([ 'minutes', 'seconds']));
+         $('.battle-results .minutes').html(timer.getTimeValues().minutes);
+                $('.battle-results .seconds').html(timer.getTimeValues().seconds);
+                $('.battle-results .secondTenths').html(timer.getTimeValues().secondTenths);
+    });
+    
+    
 
 
     /*function to display the cards on clicking the item*/
     $(".deck").on("click", "li", (function () {
         movesCounter++;
+        movesToMatch = (movesCounter%2 == 0) ?  movesToMatch+=1 : movesToMatch;
         playerPerfomance();
-        $(".moves").text(movesCounter);
+        $(".moves").text(movesToMatch);
         $(this).addClass("show open");
         var getOpenedCard = $(this).find('i').attr("class").split("fa-")[1];
         addOpenedCards(getOpenedCard);//adding opened item to opened card array

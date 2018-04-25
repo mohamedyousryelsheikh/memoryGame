@@ -127,7 +127,6 @@ h1 {
     border-radius: 4px;
     box-shadow: 1px -1px 97px #FFC107;
 }
-.success-dialog i{color:#6ad46a}
 
 button.btn.btn-primary {
     display: block;
@@ -140,3 +139,10 @@ button.btn.btn-primary {
     border-radius: 3px;
     font-size: 20px;
 }
+.text-green{color:#6ad46a}
+.success-dialog .rate-panel{
+        text-align: center;
+    width: 64%;
+    margin: 0 auto;
+}
+.success-dialog .restart{display: none;}
