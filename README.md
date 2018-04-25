@@ -17,15 +17,7 @@ If the cards do not match, both cards are flipped face down.
 The game ends once all cards have been correctly matched.
 
 
-### Game dependencies
 
-game is using easyTimer.js (https://albert-gonzalez.github.io/easytimer.js/) to track the time of the player spent to win
-
-```
-Give examples
-```
-
-#
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
